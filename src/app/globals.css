@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-arabic: var(--font-amiri);
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: #fff1f2;
+  color: #881337;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #fda4af;
+  color: #881337;
+}
