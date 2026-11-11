@@ -11,8 +11,8 @@ const amiri = Amiri({
 });
 
 export const metadata: Metadata = {
-  title: "إلى فتاة الميلاد ♡",
-  description: "مفاجأة صغيرة، وحبّ لا ينتهي.",
+  title: "إلى أحلى فتاة ميلاد ♡",
+  description: "مفاجأة صغيرة، وحبّ كبير لا ينتهي.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -380,7 +380,7 @@ export default function HoldToUnlock({ onComplete }: HoldToUnlockProps) {
               "0 2px 14px rgba(255,248,214,0.95), 0 0 38px rgba(251,191,36,0.3)",
           }}
         >
-          بلمسة منك تبدأ الحكاية.. اضغطي مطولا يا أميرتي 🌸
+          لمسة منك سكرة و تبدأ الحكاية 🌸
         </h1>
 
         <div className="relative mt-9 h-64 w-64 shrink-0 sm:mt-12 sm:h-72 sm:w-72">
@@ -513,7 +513,7 @@ export default function HoldToUnlock({ onComplete }: HoldToUnlockProps) {
           {phase === "complete"
             ? "وبلمستكِ… بدأت الحكاية ♡"
             : phase === "holding"
-              ? "استمرّي بالضغط… الحكاية تقترب ♡"
+              ? "خليك ضاغطة ... قربنا ♡"
               : "لحظة صغيرة… وحكاية لكِ وحدكِ"}
         </p>
       </motion.div>

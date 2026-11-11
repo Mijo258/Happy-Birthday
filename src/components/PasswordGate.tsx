@@ -99,7 +99,7 @@ export default function PasswordGate({ onSuccess }: PasswordGateProps) {
     }
 
     setPin("");
-    setError("ليس هذا الرمز… جرّبي مرة أخرى يا حبيبتي ♡");
+    setError("القمر ما عارف تاريخ ميلاده ولا شنو؟ ♡");
 
     void shakeControls.start({
       x: reduceMotion ? 0 : [0, -12, 12, -9, 9, -5, 5, 0],
@@ -271,7 +271,7 @@ export default function PasswordGate({ onSuccess }: PasswordGateProps) {
         </h1>
 
         <p className="font-arabic mt-2 text-xl text-rose-900/65 sm:text-2xl">
-          خبّأتُ لكِ شيئًا يشبه جمال قلبكِ
+      دي حاجة صغيرة من جمالك و جمال روحك يا أحلى غيداء بالكون
         </p>
       </motion.header>
 
@@ -320,7 +320,7 @@ export default function PasswordGate({ onSuccess }: PasswordGateProps) {
                 id={instructionsId}
                 className="font-arabic mt-1 text-base text-rose-900/65"
               >
-                أربعة أرقام… وتبدأ الحكاية
+                أربعة أرقام… ممكن تجربي تاريخ ميلادك يا سكر امكن يفتح 😂❤️
               </p>
             </div>
 
@@ -455,7 +455,7 @@ export default function PasswordGate({ onSuccess }: PasswordGateProps) {
               dir="rtl"
               className="font-arabic mt-5 text-center text-sm text-rose-900/60"
             >
-              صُنعت هذه اللحظة من أجلكِ وحدكِ
+              كل ده سكر عشانك لحالك لبى اللي يبسط قلبي
             </p>
           </motion.form>
         </motion.div>

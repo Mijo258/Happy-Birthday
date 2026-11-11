@@ -64,7 +64,7 @@ function NotebookPaper({
       dir="rtl"
       lang="ar"
       role={compact ? undefined : "article"}
-      aria-label={compact ? undefined : "رسالة حب ليكي"}
+      aria-label={compact ? undefined : "رسالة من كل قلبي لكل قلبي"}
       aria-hidden={compact || undefined}
       tabIndex={compact ? undefined : -1}
       className={`${handwritingFont.className} grand-reveal-notebook ${
@@ -82,9 +82,9 @@ function NotebookPaper({
         />
       ))}
       <div className="grand-reveal-paper-content">
-        <p className="grand-reveal-letter-heading">إلى حبيبتي ♡</p>
+        <p className="grand-reveal-letter-heading">إلى بهجة أيامي ♡</p>
         <p className="grand-reveal-letter-message">{loveLetter}</p>
-        <p className="grand-reveal-letter-signature">بكل حبي ♡</p>
+        <p className="grand-reveal-letter-signature">Mijo ♡</p>
       </div>
     </div>
   );
@@ -265,7 +265,7 @@ export default function GrandReveal() {
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "رسالة-حبي.png";
+      link.download = "رسالة-الميلاد❤️.png";
       link.style.display = "none";
       document.body.appendChild(link);
 
@@ -351,7 +351,7 @@ export default function GrandReveal() {
               className="grand-reveal-anticipation max-w-2xl"
             >
               {phase === "anticipation"
-                ? "خلاص انتهت الحركات يا سكرو و حيبدأ الأحتفال"
+                ? "خلاص انتهت الحركات يا سكر و حيبدأ الأحتفال"
                 : "خليك ثانية بس الرسالة بتتكتب حبي"}
             </p>
             {phase === "writing" && (
@@ -561,7 +561,7 @@ export default function GrandReveal() {
                       >
                         {downloadStatus === "saving"
                           ? "لحظة يا حبي… بنجهز الرسالة"
-                          : "📥 حملي الرسالة عشان تفضل معاكي"}
+                          : "تقدري تحملي الرسالة بالمناسبة ... مش قلت ليك جبت أخري في الموقع ده؟ "}
                       </motion.button>
                     )}
                   </div>
