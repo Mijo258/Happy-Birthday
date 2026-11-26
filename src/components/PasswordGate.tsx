@@ -467,7 +467,7 @@ export default function PasswordGate({ onSuccess }: PasswordGateProps) {
         animate={{ opacity: isUnlocking ? 0 : 1 }}
         transition={{ duration: 0.25 }}
       >
-        أنتِ أجمل أسباب الفرح ♡
+        يا جمال فتاة الميلاد يا ناس ❤️    ♡
       </motion.p>
 
       {/* Notify the parent only after the glow completely covers the gate. */}

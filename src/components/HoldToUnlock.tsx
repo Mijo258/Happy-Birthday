@@ -498,7 +498,7 @@ export default function HoldToUnlock({ onComplete }: HoldToUnlockProps) {
         </div>
 
         <p id={hintId} className="font-arabic mt-8 text-xl text-rose-900/75">
-          اضغطي مطولًا لمدة ٣ ثوانٍ
+          اضغطي 'طويل' لمدة ٣ ثوانٍ
         </p>
         <p id={keyboardHintId} className="sr-only">
           باستخدام لوحة المفاتيح، اضغطي باستمرار على المسافة أو Enter لمدة ثلاث

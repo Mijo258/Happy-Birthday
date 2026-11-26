@@ -22,7 +22,7 @@ const handwritingFont = Aref_Ruqaa({
 });
 
 // Replace this with your message; use a template literal for multiple lines.
-const loveLetter = "الى أجمل غيداء بالكون";
+const loveLetter = "  الى اجمل غيداء بالكون :- فتاة الميلاد و سيدة قلبي،  ما حقول ليك كل عام و انتي بخير حبيبي. بس يا قلب قلبي و كل كلي يا بخت السنين و الايام فيك، كل سنة و الدنيا كلها بخير بوجودك يا كل خير الدنيا 🤍. قلبي الحلو يا ناس و بهجة كل ايامي يا رب تعيشي و تفرحي و تنبسطي دايما و ابدا و أشوفك يا ملاكي في أعلى أعلى المراتب يا رب 🤍 كل عام و نحن و كل الدنيا بخير بيك حبيبي 🤍 ";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const FIRST_HOLD_MS = 3_000;
@@ -90,7 +90,15 @@ function NotebookPaper({
   );
 }
 
-export default function GrandReveal() {
+interface GrandRevealProps {
+  onEnterGarden?: () => void;
+  initialShowLetter?: boolean;
+}
+
+export default function GrandReveal({
+  onEnterGarden,
+  initialShowLetter = false,
+}: GrandRevealProps) {
   const reduceMotion = useReducedMotion();
   const letterId = useId();
   const paperRef = useRef<HTMLDivElement>(null);
@@ -98,10 +106,12 @@ export default function GrandReveal() {
   const mountedRef = useRef(false);
   const downloadLockRef = useRef(false);
 
-  const [phase, setPhase] = useState<Phase>("anticipation");
+  const [phase, setPhase] = useState<Phase>(
+    initialShowLetter ? "letter" : "anticipation",
+  );
   const [writingVisible, setWritingVisible] = useState(false);
   const [photoVisible, setPhotoVisible] = useState(false);
-  const [letterReady, setLetterReady] = useState(false);
+  const [letterReady, setLetterReady] = useState(initialShowLetter);
   const [photoFailed, setPhotoFailed] = useState(false);
   const [downloadStatus, setDownloadStatus] =
     useState<DownloadStatus>("idle");
@@ -544,25 +554,45 @@ export default function GrandReveal() {
                     <NotebookPaper paperRef={paperRef} id={letterId} />
                   </motion.div>
 
-                  {/* Reserve space so the paper stays still when the button appears. */}
-                  <div className="flex min-h-[100px] w-full items-end justify-center pt-7">
+                  {/* These controls stay outside paperRef so PNG export remains unchanged. */}
+                  <div className="flex min-h-[100px] w-full flex-col items-center justify-start gap-4 pt-7">
                     {letterReady && (
-                      <motion.button
-                        type="button"
-                        onClick={downloadLetter}
-                        disabled={downloadStatus === "saving"}
-                        aria-busy={downloadStatus === "saving"}
-                        initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: reduceMotion ? 0 : 0.5, ease: EASE }}
-                        whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
-                        whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-                        className="grand-reveal-download rounded-full px-6 py-4 text-center text-lg leading-relaxed transition-shadow disabled:cursor-wait disabled:opacity-70 sm:px-8 sm:text-xl"
-                      >
-                        {downloadStatus === "saving"
-                          ? "لحظة يا حبي… بنجهز الرسالة"
-                          : "لو ضغطتي هنا تقدري تحملي الرسالة بالمناسبة ... مش قلت ليك جبت أخري في الموقع ده؟ "}
-                      </motion.button>
+                      <>
+                        <motion.button
+                          type="button"
+                          onClick={downloadLetter}
+                          disabled={downloadStatus === "saving"}
+                          aria-busy={downloadStatus === "saving"}
+                          initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: reduceMotion ? 0 : 0.5, ease: EASE }}
+                          whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
+                          whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+                          className="grand-reveal-download rounded-full px-6 py-4 text-center text-lg leading-relaxed transition-shadow disabled:cursor-wait disabled:opacity-70 sm:px-8 sm:text-xl"
+                        >
+                          {downloadStatus === "saving"
+                            ? "لحظة يا حبي… بنجهز الرسالة"
+                            : "لو ضغطتي هنا تقدري تحملي الرسالة بالمناسبة ... مش قلت ليك جبت أخري في الموقع ده؟ "}
+                        </motion.button>
+                        {onEnterGarden && (
+                          <motion.button
+                            type="button"
+                            onClick={onEnterGarden}
+                            initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                              duration: reduceMotion ? 0 : 0.65,
+                              delay: reduceMotion ? 0 : 0.12,
+                              ease: EASE,
+                            }}
+                            whileHover={reduceMotion ? undefined : { y: -3, scale: 1.025 }}
+                            whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+                            className="grand-reveal-garden rounded-full px-6 py-3 text-center text-lg leading-relaxed sm:px-8 sm:text-xl"
+                          >
+                            وبعد الرسالة ادخلي حديقة ذكرياتنا 🌸
+                          </motion.button>
+                        )}
+                      </>
                     )}
                   </div>
                   <p
@@ -859,6 +889,23 @@ export default function GrandReveal() {
         }
         .grand-reveal-download:focus-visible {
           outline: 2px solid #b7853e;
+          outline-offset: 5px;
+        }
+        .grand-reveal-garden {
+          border: 1px solid #d9a89a;
+          background: linear-gradient(120deg, #fff8ee, #edc0bd 48%, #c89555);
+          color: #7e4e47;
+          box-shadow: 0 0 28px #e7afaa52, 0 10px 25px #9e6d5c26,
+            inset 0 1px 0 #ffffffb8;
+          cursor: pointer;
+          text-shadow: 0 1px 0 #ffffff7a;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .grand-reveal-garden:hover {
+          box-shadow: 0 0 36px #e7afaa78, 0 12px 28px #9e6d5c30;
+        }
+        .grand-reveal-garden:focus-visible {
+          outline: 2px solid #bc8750;
           outline-offset: 5px;
         }
         @media (max-width: 420px) {
